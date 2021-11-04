@@ -66,7 +66,7 @@ with DAG(
 ) as dag:
 
     # An example of how to get the cluster id and arn from an Airflow connection
-    conn = Connection.get("aws_default")
+    conn = Connection.get_connection_from_secrets(conn_id="aws_default")
     VIRTUAL_CLUSTER_ID = '{{ conn.emr_eks.extra_dejson["virtual_cluster_id"] }}'
     JOB_ROLE_ARN = '{{ conn.emr_eks.extra_dejson["job_role_arn"] }}'
 
