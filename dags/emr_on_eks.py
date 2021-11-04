@@ -25,8 +25,8 @@ from airflow.providers.amazon.aws.operators.emr_containers import EMRContainerOp
 from airflow.utils.dates import days_ago
 
 # [START howto_operator_emr_eks_env_variables]
-VIRTUAL_CLUSTER_ID = os.getenv("VIRTUAL_CLUSTER_ID", "test-cluster")
-JOB_ROLE_ARN = os.getenv("JOB_ROLE_ARN", "arn:aws:iam::012345678912:role/emr_eks_default_role")
+VIRTUAL_CLUSTER_ID = os.getenv("VIRTUAL_CLUSTER_ID", "5vx2rpjsyy4s1nu4za0ct4bbu")
+JOB_ROLE_ARN = os.getenv("JOB_ROLE_ARN", "arn:aws:iam::977333909277:role/data-dev-stg-ec2-basic")
 # [END howto_operator_emr_eks_env_variables]
 
 
