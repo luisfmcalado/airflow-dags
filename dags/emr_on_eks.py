@@ -22,12 +22,11 @@ from datetime import timedelta
 
 from airflow import DAG
 from airflow.providers.amazon.aws.operators.emr_containers import EMRContainerOperator
-from airflow.models.connection import Connection
 from airflow.utils.dates import days_ago
 
 # [START howto_operator_emr_eks_env_variables]
-#VIRTUAL_CLUSTER_ID = os.getenv("VIRTUAL_CLUSTER_ID", "5vx2rpjsyy4s1nu4za0ct4bbu")
-#JOB_ROLE_ARN = os.getenv("JOB_ROLE_ARN", "arn:aws:iam::977333909277:role/data-dev-stg-ec2-basic")
+VIRTUAL_CLUSTER_ID = os.getenv("VIRTUAL_CLUSTER_ID", "5vx2rpjsyy4s1nu4za0ct4bbu")
+JOB_ROLE_ARN = os.getenv("JOB_ROLE_ARN", "arn:aws:iam::977333909277:role/data-dev--ec2-basic")
 # [END howto_operator_emr_eks_env_variables]
 
 
@@ -66,9 +65,8 @@ with DAG(
 ) as dag:
 
     # An example of how to get the cluster id and arn from an Airflow connection
-    conn = Connection.get_connection_from_secrets(conn_id="aws_default")
-    VIRTUAL_CLUSTER_ID = '{{ conn.emr_eks.extra_dejson["virtual_cluster_id"] }}'
-    JOB_ROLE_ARN = '{{ conn.emr_eks.extra_dejson["job_role_arn"] }}'
+    # VIRTUAL_CLUSTER_ID = '{{ conn.emr_eks.extra_dejson["virtual_cluster_id"] }}'
+    # JOB_ROLE_ARN = '{{ conn.emr_eks.extra_dejson["job_role_arn"] }}'
 
     # [START howto_operator_emr_eks_jobrun]
     job_starter = EMRContainerOperator(
