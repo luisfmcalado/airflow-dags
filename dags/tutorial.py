@@ -66,7 +66,7 @@ with DAG(
     'tutorial',
     default_args=default_args,
     description='A simple tutorial DAG',
-    schedule_interval=timedelta(minutes=1),
+    schedule_interval=timedelta(minutes=10),
     start_date=datetime(2021, 1, 1),
     catchup=False,
     tags=['example'],
