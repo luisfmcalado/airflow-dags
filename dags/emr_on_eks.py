@@ -22,6 +22,7 @@ from datetime import timedelta
 
 from airflow import DAG
 from airflow.providers.amazon.aws.operators.emr_containers import EMRContainerOperator
+from airflow.models.connection import Connection
 from airflow.utils.dates import days_ago
 
 # [START howto_operator_emr_eks_env_variables]
@@ -65,6 +66,7 @@ with DAG(
 ) as dag:
 
     # An example of how to get the cluster id and arn from an Airflow connection
+    conn = Connection.get("aws_default")
     VIRTUAL_CLUSTER_ID = '{{ conn.emr_eks.extra_dejson["virtual_cluster_id"] }}'
     JOB_ROLE_ARN = '{{ conn.emr_eks.extra_dejson["job_role_arn"] }}'
 
