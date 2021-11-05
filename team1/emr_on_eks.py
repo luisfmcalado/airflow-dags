@@ -57,7 +57,7 @@ CONFIGURATION_OVERRIDES_ARG = {
 # [END howto_operator_emr_eks_config]
 
 with DAG(
-    dag_id='emr_eks_pi_job',
+    dag_id='emr_eks_pi_job_2',
     dagrun_timeout=timedelta(hours=2),
     start_date=days_ago(1),
     schedule_interval="@once",
